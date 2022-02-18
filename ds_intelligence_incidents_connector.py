@@ -124,6 +124,9 @@ class DSIntelligenceIncidentsConnector(object):
                     action_result.add_data(intelligence_incident_ioc.payload)
 
             action_result.set_status(phantom.APP_SUCCESS, DS_GET_INTELLIGENCE_INCIDENT_SUCCESS)
+        else:
+            action_result.set_status(phantom.APP_SUCCESS, "Returned empty response from Searchlight")
+
         return action_result.get_status()
 
     def get_intelligence_incident(self, param):
