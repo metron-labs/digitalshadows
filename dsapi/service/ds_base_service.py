@@ -74,9 +74,14 @@ class DSBaseService(DSAbstractService):
                                                                 method=method,
                                                                 body=str(body).replace("'", '"'),
                                                                 headers=headers)
+
         if int(response['status']) in (200, 204):
             if content != "":
-                res_text = json.loads(content)
+                try:
+                    res_text = json.loads(content)
+                except json.decoder.JSONDecodeError:
+                    return {'status': response['status'],
+                        'message': 'SUCCESS'}
             else:
                 res_text = ""
             post_response = {

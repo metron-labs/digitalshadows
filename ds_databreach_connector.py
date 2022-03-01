@@ -300,6 +300,8 @@ class DSDataBreachConnector(object):
         if phantom.is_fail(ret_val):
             return action_result.get_status()
         try:
+            data = breach_record_service.find_data_breach_record_reviews(breach_record_id)
+            post_data['version'] = data[0]['version']
             response = breach_record_service.post_data_breach_record_review(post_data, breach_record_id=breach_record_id)
         except Exception as e:
             error_message = self._handle_exception_object.get_error_message_from_exception(e)

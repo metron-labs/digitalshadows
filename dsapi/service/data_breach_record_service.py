@@ -70,7 +70,6 @@ class DataBreachRecordService(DSBaseService):
         :param view: Breach record ID
         :return: Incident Reviews
         """
-        post_view['version'] = 1
         return self._request_post('/api/data-breach-record/'+str(breach_record_id)+'/reviews', body=post_view)
 
     @staticmethod
