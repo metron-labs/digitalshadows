@@ -10,6 +10,7 @@ from .ds_find_service import DSFindService
 from ..model.intelligence_incident import IntelligenceIncident
 from ..model.intelligence_incident_ioc import IntelligenceIncidentIoc
 
+
 class IntelligenceIncidentService(DSFindService):
 
     def __init__(self, ds_api_key, ds_api_secret_key, proxy=None):
@@ -52,7 +53,7 @@ class IntelligenceIncidentService(DSFindService):
         :param view: Intelligence Incident ID
         :return: Incident Reviews
         """
-        return self._request('/api/intel-incidents/'+str(intel_incident_id))
+        return self._request('/api/intel-incidents/' + str(intel_incident_id))
 
     def find_intel_incident_ioc_by_id(self, intel_incident_id=None, view=None):
         """
@@ -66,7 +67,6 @@ class IntelligenceIncidentService(DSFindService):
             view = IntelligenceIncidentService.intelligence_incident_ioc_view()
 
         return self._read_all_pages('/api/intel-incidents/' + str(intel_incident_id) + '/iocs', view, IntelligenceIncidentIoc)
-
 
     @staticmethod
     @DSBaseService.paginated()

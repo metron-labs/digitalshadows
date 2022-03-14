@@ -68,14 +68,15 @@ class DSSearchEntitiesConnector(object):
             error_message = self._handle_exception_object.get_error_message_from_exception(e)
             return action_result.set_status(phantom.APP_ERROR, "Error Connecting to server. {0}".format(error_message))
         """
-        search_view = search_service.search_entity_view(types=type, dateRange=date_range, incidentTypes=incident_types, incidentSubtypes=incident_subtypes,
-                                                        incidentSeverities=incident_severities, webPageNetworks=web_page_networks,
-                                                        forumPostNetworks=forum_post_networks, marketplaceListingNetworks=marketplace_listing_networks,
-                                                        marketplaces=market_places, chatProtocols=chat_protocols, chatServers=chat_servers,
-                                                        chatChannels=chat_channels, threatLevelTypes=threat_level_types,
-                                                        webPageSiteCategories=web_page_site_categories, forumPostSiteCategories=forum_post_site_categories,
-                                                        blogNames=blog_names, datePeriod=date_period, from_date=start_date,
-                                                        until=end_date, query_string=query)
+        search_view = search_service.search_entity_view(
+            types=type, dateRange=date_range, incidentTypes=incident_types, incidentSubtypes=incident_subtypes,
+            incidentSeverities=incident_severities, webPageNetworks=web_page_networks,
+            forumPostNetworks=forum_post_networks, marketplaceListingNetworks=marketplace_listing_networks,
+            marketplaces=market_places, chatProtocols=chat_protocols, chatServers=chat_servers,
+            chatChannels=chat_channels, threatLevelTypes=threat_level_types,
+            webPageSiteCategories=web_page_site_categories, forumPostSiteCategories=forum_post_site_categories,
+            blogNames=blog_names, datePeriod=date_period, from_date=start_date,
+            until=end_date, query_string=query)
         """
         self._connector.save_progress("View: {}".format(search_view))
         try:

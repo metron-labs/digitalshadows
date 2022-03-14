@@ -37,7 +37,6 @@ class DataBreachRecordService(DSBaseService):
                                            body=view)
         return DSPaginationGroupingIterator(provider, DataBreachRecord)
 
-
     def read_all_records(self, view=None):
         """
         Streams all DataBreach objects retrieved from the Digital Shadows API in page groups.
@@ -61,7 +60,7 @@ class DataBreachRecordService(DSBaseService):
         :param view: Breach record ID
         :return: Incident Reviews
         """
-        return self._request('/api/data-breach-record/'+str(breach_id)+'/reviews')
+        return self._request('/api/data-breach-record/' + str(breach_id) + '/reviews')
 
     def post_data_breach_record_review(self, post_view=None, breach_record_id=None):
         """
@@ -70,7 +69,7 @@ class DataBreachRecordService(DSBaseService):
         :param view: Breach record ID
         :return: Incident Reviews
         """
-        return self._request_post('/api/data-breach-record/'+str(breach_record_id)+'/reviews', body=post_view)
+        return self._request_post('/api/data-breach-record/' + str(breach_record_id) + '/reviews', body=post_view)
 
     @staticmethod
     @DSBaseService.paginated(size=500)

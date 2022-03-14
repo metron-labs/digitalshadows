@@ -4,7 +4,6 @@
 #
 
 from .ds_base_service import DSBaseService
-from ..model.ds_model import DSModel
 from ..model.ds_pagination_iterator import DSPaginationIterator
 from ..model.ds_pagination_grouping_iterator import DSPaginationGroupingIterator
 

@@ -9,9 +9,9 @@ class DSAPIToPipelineTransform(object):
     def apply(cls, json, pipeline_range):
         """
         Transform Digital Shadows pipeline api data to Pipeline object.
-        
+
         :type pipeline_range: PipelineRange
-        :param cls: Pipeline constructor 
+        :param cls: Pipeline constructor
         :param json: api data
         :param pipeline_range:
         :return: Pipeline

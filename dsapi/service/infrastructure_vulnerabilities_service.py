@@ -47,8 +47,9 @@ class InfrastructureVulnerabilitiesService(DSFindService):
     @staticmethod
     @DSBaseService.paginated(size=500)
     @DSBaseService.sorted('published')
-    def infrastructure_vulnerabilities_view(published='ALL', domain=None, detected='ALL', cveidentifiers=None, markedclosed=False, detectedclosed=False,
-	                     incidenttypes=None, severities=None, alerted=False, reverse=None):
+    def infrastructure_vulnerabilities_view(published='ALL', domain=None, detected='ALL', 
+                        cveidentifiers=None, markedclosed=False, detectedclosed=False,
+	                    incidenttypes=None, severities=None, alerted=False, reverse=None):
         view = {
             'filter': {
                 'published': published,

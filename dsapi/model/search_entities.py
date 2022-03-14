@@ -20,5 +20,4 @@ class SearchEntities(DSModel):
 
     @classmethod
     def from_json(cls, json):
-        cast = DSModel.cast
         return cls(json)

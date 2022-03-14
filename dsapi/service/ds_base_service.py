@@ -69,7 +69,7 @@ class DSBaseService(DSAbstractService):
         """
         url = '{}{}'.format(self._url_base, path)
         headers = self._headers() if headers is None else headers
-        
+
         response, content = super(DSBaseService, self)._request(url,
                                                                 method=method,
                                                                 body=str(body).replace("'", '"'),

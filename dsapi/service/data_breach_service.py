@@ -51,7 +51,7 @@ class DataBreachService(DSFindService):
         :param view: Intelligence Incident ID
         :return: Incident Reviews
         """
-        return self._request('/api/data-breach/'+str(breach_id))
+        return self._request('/api/data-breach/' + str(breach_id))
 
     @staticmethod
     @DSBaseService.paginated(size=500)

@@ -42,10 +42,10 @@ import random
 import re
 import socket
 import ssl
-import sys
 import time
 import urllib.parse
 import zlib
+from httplib2 import certs
 
 try:
     import socks
@@ -172,7 +172,7 @@ SAFE_METHODS = ("GET", "HEAD", "OPTIONS", "TRACE")
 REDIRECT_CODES = frozenset((300, 301, 302, 303, 307, 308))
 
 
-from httplib2 import certs
+
 CA_CERTS = certs.where()
 
 # PROTOCOL_TLS is python 3.5.3+. PROTOCOL_SSLv23 is deprecated.
@@ -331,7 +331,8 @@ USE_WWW_AUTH_STRICT_PARSING = 0
 
 # In regex below:
 #    [^\0-\x1f\x7f-\xff()<>@,;:\\\"/[\]?={} \t]+             matches a "token" as defined by HTTP
-#    "(?:[^\0-\x08\x0A-\x1f\x7f-\xff\\\"]|\\[\0-\x7f])*?"    matches a "quoted-string" as defined by HTTP, when LWS have already been replaced by a single space
+#    "(?:[^\0-\x08\x0A-\x1f\x7f-\xff\\\"]|\\[\0-\x7f])*?"    matches a "quoted-string" as defined by HTTP, 
+# when LWS have already been replaced by a single space
 # Actually, as an auth-param value can be either a token or a quoted-string, they are combined in a single pattern which matches both:
 #    \"?((?<=\")(?:[^\0-\x1f\x7f-\xff\\\"]|\\[\0-\x7f])*?(?=\")|(?<!\")[^\0-\x08\x0A-\x1f\x7f-\xff()<>@,;:\\\"/[\]?={} \t]+(?!\"))\"?
 WWW_AUTH_STRICT = re.compile(
@@ -410,8 +411,8 @@ def _entry_disposition(response_headers, request_headers):
     cc_response = _parse_cache_control(response_headers)
 
     if (
-        "pragma" in request_headers
-        and request_headers["pragma"].lower().find("no-cache") != -1
+        "pragma" in request_headers and
+        request_headers["pragma"].lower().find("no-cache") != -1
     ):
         retval = "TRANSPARENT"
         if "cache-control" not in request_headers:
@@ -433,7 +434,7 @@ def _entry_disposition(response_headers, request_headers):
                 freshness_lifetime = 0
         elif "expires" in response_headers:
             expires = email.utils.parsedate_tz(response_headers["expires"])
-            if None == expires:
+            if expires is None:
                 freshness_lifetime = 0
             else:
                 freshness_lifetime = max(0, calendar.timegm(expires) - date)
@@ -515,10 +516,10 @@ def _updateCache(request_headers, response_headers, content, cache, cachekey):
             vary = response_headers.get("vary", None)
             if vary:
                 vary_headers = vary.lower().replace(" ", "").split(",")
-                for header in vary_headers:
-                    key = "-varied-%s" % header
+                for headers in vary_headers:
+                    key = "-varied-%s" % headers
                     try:
-                        info[key] = request_headers[header]
+                        info[key] = request_headers[headers]
                     except KeyError:
                         pass
 
@@ -579,7 +580,7 @@ class Authentication(object):
 
     def depth(self, request_uri):
         (scheme, authority, path, query, fragment) = parse_uri(request_uri)
-        return request_uri[len(self.path) :].count("/")
+        return request_uri[len(self.path):].count("/")
 
     def inscope(self, host, request_uri):
         # XXX Should we normalize the request_uri?
@@ -1041,7 +1042,7 @@ class ProxyInfo(object):
         )
 
     def isgood(self):
-        return socks and (self.proxy_host != None) and (self.proxy_port != None)
+        return socks and (self.proxy_host is not None) and (self.proxy_port is not None)
 
     def applies_to(self, hostname):
         return not self.bypass_host(hostname)
@@ -1064,8 +1065,8 @@ class ProxyInfo(object):
     def __repr__(self):
         return (
             "<ProxyInfo type={p.proxy_type} "
-            "host:port={p.proxy_host}:{p.proxy_port} rdns={p.proxy_rdns}"
-            + " user={p.proxy_user} headers={p.proxy_headers}>"
+            "host:port={p.proxy_host}:{p.proxy_port} rdns={p.proxy_rdns}" + 
+            " user={p.proxy_user} headers={p.proxy_headers}>"
         ).format(p=self)
 
 
@@ -1331,8 +1332,8 @@ class HTTPSConnectionWithTimeout(http.client.HTTPSConnection):
 
                 # Python 3.3 compatibility: emulate the check_hostname behavior
                 if (
-                    not hasattr(self._context, "check_hostname")
-                    and not self.disable_ssl_certificate_validation
+                    not hasattr(self._context, "check_hostname") and 
+                    not self.disable_ssl_certificate_validation
                 ):
                     try:
                         ssl.match_hostname(self.sock.getpeercert(), self.host)
@@ -1677,9 +1678,9 @@ class Http(object):
                     break
 
         if (
-            self.follow_all_redirects
-            or method in self.safe_methods
-            or response.status in (303, 308)
+            self.follow_all_redirects or 
+            method in self.safe_methods or 
+            response.status in (303, 308)
         ):
             if self.follow_redirects and response.status in self.redirect_codes:
                 # Pick out the location header and basically start from the beginning
@@ -1697,7 +1698,7 @@ class Http(object):
                     if "location" in response:
                         location = response["location"]
                         (scheme, authority, path, query, fragment) = parse_uri(location)
-                        if authority == None:
+                        if authority is None:
                             response["location"] = urllib.parse.urljoin(
                                 absolute_uri, location
                             )
@@ -1711,8 +1712,8 @@ class Http(object):
                     if "if-modified-since" in headers:
                         del headers["if-modified-since"]
                     if (
-                        "authorization" in headers
-                        and not self.forward_authorization_headers
+                        "authorization" in headers and 
+                        not self.forward_authorization_headers
                     ):
                         del headers["authorization"]
                     if "location" in response:
@@ -1860,11 +1861,11 @@ a string that contains the response entity body.
                         cached_value = None
 
             if (
-                method in self.optimistic_concurrency_methods
-                and self.cache
-                and "etag" in info
-                and not self.ignore_etag
-                and "if-match" not in headers
+                method in self.optimistic_concurrency_methods and 
+                self.cache and 
+                "etag" in info and 
+                not self.ignore_etag and 
+                "if-match" not in headers
             ):
                 # http://www.w3.org/1999/04/Editing/
                 headers["if-match"] = info["etag"]
@@ -1880,18 +1881,18 @@ a string that contains the response entity body.
             if method in self.safe_methods and "vary" in info:
                 vary = info["vary"]
                 vary_headers = vary.lower().replace(" ", "").split(",")
-                for header in vary_headers:
-                    key = "-varied-%s" % header
+                for head in vary_headers:
+                    key = "-varied-%s" % head
                     value = info[key]
-                    if headers.get(header, None) != value:
+                    if headers.get(head, None) != value:
                         cached_value = None
                         break
 
             if (
-                self.cache
-                and cached_value
-                and (method in self.safe_methods or info["status"] == "308")
-                and "range" not in headers
+                self.cache and 
+                cached_value and 
+                (method in self.safe_methods or info["status"] == "308") and 
+                "range" not in headers
             ):
                 redirect_method = method
                 if info["status"] not in ("307", "308"):
@@ -1934,12 +1935,12 @@ a string that contains the response entity body.
 
                     if entry_disposition == "STALE":
                         if (
-                            "etag" in info
-                            and not self.ignore_etag
-                            and not "if-none-match" in headers
+                            "etag" in info and 
+                            not self.ignore_etag and 
+                            "if-none-match" not in headers
                         ):
                             headers["if-none-match"] = info["etag"]
-                        if "last-modified" in info and not "last-modified" in headers:
+                        if "last-modified" in info and "last-modified" not in headers:
                             headers["if-modified-since"] = info["last-modified"]
                     elif entry_disposition == "TRANSPARENT":
                         pass
