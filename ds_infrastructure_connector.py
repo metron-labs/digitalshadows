@@ -6,11 +6,12 @@
 import phantom.app as phantom
 from phantom.action_result import ActionResult
 
-from digital_shadows_consts import DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG
-from digital_shadows_consts import DS_GET_INFRASTRUCTURE_SUCCESS, DS_GET_INFRASTRUCTURE_NOT_FOUND
-from digital_shadows_consts import DS_GET_INFRASTRUCTURE_SSL_SUCCESS, DS_GET_INFRASTRUCTURE_SSL_NOT_FOUND
-from digital_shadows_consts import DS_GET_INFRASTRUCTURE_VULNERABILITIES_SUCCESS, DS_GET_INFRASTRUCTURE_VULNERABILITIES_NOT_FOUND
-
+from digital_shadows_consts import (
+    DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG, DS_GET_INFRASTRUCTURE_NOT_FOUND,
+    DS_GET_INFRASTRUCTURE_SSL_NOT_FOUND, DS_GET_INFRASTRUCTURE_SSL_SUCCESS,
+    DS_GET_INFRASTRUCTURE_SUCCESS,
+    DS_GET_INFRASTRUCTURE_VULNERABILITIES_NOT_FOUND,
+    DS_GET_INFRASTRUCTURE_VULNERABILITIES_SUCCESS)
 from dsapi.service.infrastructure_service import InfrastructureService
 from dsapi.service.infrastructure_ssl_service import InfrastructureSSLService
 from dsapi.service.infrastructure_vulnerabilities_service import InfrastructureVulnerabilitiesService

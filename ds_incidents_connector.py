@@ -5,13 +5,18 @@
 
 import phantom.app as phantom
 from phantom.action_result import ActionResult
-# from datetime import date, timedelta
 
-from digital_shadows_consts import (INCIDENT_ID_KEY, SERVICE_ERR_MSG, DS_GET_INCIDENT_SUCCESS, DS_SMC_SUBTYPE,
-                                    DS_PS_SUBTYPE, DS_INFR_SUBTYPE, DS_DL_SUBTYPE, DS_BP_SUBTYPE, DS_API_SECRET_KEY_CFG, DS_API_KEY_CFG)
-
+from digital_shadows_consts import (DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG,
+                                    DS_BP_SUBTYPE, DS_DL_SUBTYPE,
+                                    DS_GET_INCIDENT_SUCCESS, DS_INFR_SUBTYPE,
+                                    DS_PS_SUBTYPE, DS_SMC_SUBTYPE,
+                                    INCIDENT_ID_KEY, SERVICE_ERR_MSG)
 from dsapi.service.incident_service import IncidentService
 from exception_handling_functions import ExceptionHandling
+
+# from datetime import date, timedelta
+
+
 # import json
 
 

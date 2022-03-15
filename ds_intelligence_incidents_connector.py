@@ -5,15 +5,18 @@
 
 import phantom.app as phantom
 from phantom.action_result import ActionResult
-# from datetime import date, timedelta
-# from unidecode import unidecode
 
-from digital_shadows_consts import (DS_GET_INTELLIGENCE_INCIDENT_SUCCESS, SERVICE_ERR_MSG, DS_SMC_SUBTYPE,
-                                    DS_PS_SUBTYPE, DS_INFR_SUBTYPE, DS_BP_SUBTYPE, DS_DL_SUBTYPE, INTEL_INCIDENT_ID_KEY,
-                                    DS_API_SECRET_KEY_CFG, DS_API_KEY_CFG)
-
+from digital_shadows_consts import (DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG,
+                                    DS_BP_SUBTYPE, DS_DL_SUBTYPE,
+                                    DS_GET_INTELLIGENCE_INCIDENT_SUCCESS,
+                                    DS_INFR_SUBTYPE, DS_PS_SUBTYPE,
+                                    DS_SMC_SUBTYPE, INTEL_INCIDENT_ID_KEY,
+                                    SERVICE_ERR_MSG)
 from dsapi.service.intelligence_incident_service import IntelligenceIncidentService
 from exception_handling_functions import ExceptionHandling
+
+# from datetime import date, timedelta
+# from unidecode import unidecode
 
 
 class DSIntelligenceIncidentsConnector(object):

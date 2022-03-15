@@ -4,9 +4,9 @@
 #
 
 from abc import ABCMeta
-from httplib2 import Http, ProxyInfo, socks, proxy_info_from_environment
 
 from dsapi.config.ds_proxy_config import DSProxyConfig
+from httplib2 import Http, ProxyInfo, proxy_info_from_environment, socks
 
 
 class DSAbstractService(object, metaclass=ABCMeta):

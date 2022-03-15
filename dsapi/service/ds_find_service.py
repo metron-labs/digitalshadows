@@ -3,9 +3,9 @@
 # Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 #
 
-from .ds_base_service import DSBaseService
-from ..model.ds_pagination_iterator import DSPaginationIterator
 from ..model.ds_pagination_grouping_iterator import DSPaginationGroupingIterator
+from ..model.ds_pagination_iterator import DSPaginationIterator
+from .ds_base_service import DSBaseService
 
 
 class DSFindService(DSBaseService):

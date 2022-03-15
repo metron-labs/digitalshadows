@@ -5,10 +5,10 @@
 
 from datetime import date
 
-from .ds_base_service import DSBaseService
-from .ds_find_service import DSFindService
 from ..model.intelligence_incident import IntelligenceIncident
 from ..model.intelligence_incident_ioc import IntelligenceIncidentIoc
+from .ds_base_service import DSBaseService
+from .ds_find_service import DSFindService
 
 
 class IntelligenceIncidentService(DSFindService):

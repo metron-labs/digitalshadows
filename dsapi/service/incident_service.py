@@ -5,9 +5,9 @@
 
 from datetime import date
 
+from ..model.incident import Incident
 from .ds_base_service import DSBaseService
 from .ds_find_service import DSFindService
-from ..model.incident import Incident
 
 
 class IncidentService(DSFindService):

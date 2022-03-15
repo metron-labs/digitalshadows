@@ -4,9 +4,9 @@
 #
 
 
+from ..model.search_entities import SearchEntities
 from .ds_base_service import DSBaseService
 from .ds_find_service import DSFindService
-from ..model.search_entities import SearchEntities
 
 
 class SearchEntitiesService(DSFindService):

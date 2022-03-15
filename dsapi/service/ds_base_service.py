@@ -3,14 +3,12 @@
 # Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 #
 
+import base64
 import json
 import time
-import base64
-
 from functools import wraps
 
-from ..config.config import ds_api_host, ds_api_base
-
+from ..config.config import ds_api_base, ds_api_host
 from .ds_abstract_service import DSAbstractService
 
 

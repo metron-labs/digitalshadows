@@ -3,21 +3,20 @@
 # Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 #
 
+import json
+
 import phantom.app as phantom
 from phantom.base_connector import BaseConnector
 
-import json
-
 from digital_shadows_consts import DS_ACTION_NOT_SUPPORTED
-
-from ds_test_connectivity_connector import DSTestConnectivityConnector
-# from ds_lookup_username_connector import DSLookupUsernameConnector
-from ds_on_poll_connector import DSOnPollConnector
+from ds_databreach_connector import DSDataBreachConnector
 from ds_incidents_connector import DSIncidentsConnector
 from ds_intelligence_incidents_connector import DSIntelligenceIncidentsConnector
-from ds_databreach_connector import DSDataBreachConnector
+# from ds_lookup_username_connector import DSLookupUsernameConnector
+from ds_on_poll_connector import DSOnPollConnector
 # from ds_infrastructure_connector import DSInfrastructureConnector
 from ds_search_entities_connector import DSSearchEntitiesConnector
+from ds_test_connectivity_connector import DSTestConnectivityConnector
 
 
 class DigitalShadowsConnector(BaseConnector):

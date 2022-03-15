@@ -3,10 +3,9 @@
 # Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 #
 
+from ..model.data_breach_username_summary import DataBreachUsernameSummary
 from .ds_base_service import DSBaseService
 from .ds_find_service import DSFindService
-
-from ..model.data_breach_username_summary import DataBreachUsernameSummary
 
 
 class DataBreachUsernameService(DSFindService):
