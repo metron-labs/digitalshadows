@@ -4,7 +4,8 @@
 #
 
 import phantom.app as phantom
-from digital_shadows_consts import *
+from digital_shadows_consts import (DS_TEST_CONNECTIVITY_MSG_FAIL, DS_TEST_CONNECTIVITY_MSG_PASS,
+                                    DS_TEST_CONNECTIVITY_MSG, DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG)
 from dsapi.service.ds_base_service import DSBaseService
 from exception_handling_functions import ExceptionHandling
 

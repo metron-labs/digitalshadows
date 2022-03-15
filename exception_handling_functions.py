@@ -3,7 +3,7 @@
 # Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 #
 
-from digital_shadows_consts import *
+from digital_shadows_consts import NON_NEGATIVE_INTEGER_MSG, VALID_INTEGER_MSG, PARSE_ERR_MSG, ERR_CODE_MSG, ERR_MSG_UNAVAILABLE
 import phantom.app as phantom
 
 

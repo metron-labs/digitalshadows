@@ -8,7 +8,9 @@ from phantom.action_result import ActionResult
 # from datetime import date, timedelta
 # from unidecode import unidecode
 
-from digital_shadows_consts import *
+from digital_shadows_consts import (DS_GET_INTELLIGENCE_INCIDENT_SUCCESS, SERVICE_ERR_MSG, DS_SMC_SUBTYPE,
+                                    DS_PS_SUBTYPE, DS_INFR_SUBTYPE, DS_BP_SUBTYPE, DS_DL_SUBTYPE, INTEL_INCIDENT_ID_KEY,
+                                    DS_API_SECRET_KEY_CFG, DS_API_KEY_CFG)
 
 from dsapi.service.intelligence_incident_service import IntelligenceIncidentService
 from exception_handling_functions import ExceptionHandling
@@ -145,15 +147,15 @@ class DSIntelligenceIncidentsConnector(object):
 
             for inc_type in param_incident_types:
                 if inc_type == "DATA_LEAKAGE":
-                    incident_types.append({'type': 'DATA_LEAKAGE', 'subTypes': DS_DL_SUBTYPE })
+                    incident_types.append({'type': 'DATA_LEAKAGE', 'subTypes': DS_DL_SUBTYPE})
                 if inc_type == "BRAND_PROTECTION":
-                    incident_types.append({'type': 'BRAND_PROTECTION', 'subTypes': DS_BP_SUBTYPE })
+                    incident_types.append({'type': 'BRAND_PROTECTION', 'subTypes': DS_BP_SUBTYPE})
                 if inc_type == "INFRASTRUCTURE":
-                    incident_types.append({'type': 'INFRASTRUCTURE', 'subTypes': DS_INFR_SUBTYPE })
+                    incident_types.append({'type': 'INFRASTRUCTURE', 'subTypes': DS_INFR_SUBTYPE})
                 if inc_type == "PHYSICAL_SECURITY":
-                    incident_types.append({'type': 'PHYSICAL_SECURITY', 'subTypes': DS_PS_SUBTYPE })
+                    incident_types.append({'type': 'PHYSICAL_SECURITY', 'subTypes': DS_PS_SUBTYPE})
                 if inc_type == "SOCIAL_MEDIA_COMPLIANCE":
-                    incident_types.append({'type': 'SOCIAL_MEDIA_COMPLIANCE', 'subTypes': DS_SMC_SUBTYPE })
+                    incident_types.append({'type': 'SOCIAL_MEDIA_COMPLIANCE', 'subTypes': DS_SMC_SUBTYPE})
                 if inc_type == "CYBER_THREAT":
                     incident_types.append({'type': 'CYBER_THREAT'})
         else:

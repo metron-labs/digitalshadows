@@ -11,7 +11,9 @@ from unidecode import unidecode
 import phantom.app as phantom
 from phantom.action_result import ActionResult
 
-from digital_shadows_consts import *
+from digital_shadows_consts import (DS_POLL_INCIDENT_COMPLETE, SERVICE_ERR_MSG, DS_SMC_SUBTYPE,
+                                    DS_BP_SUBTYPE, DS_PS_SUBTYPE, DS_INFR_SUBTYPE, DS_DL_SUBTYPE,
+                                    HISTORY_DAYS_INTERVAL_KEY, DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG)
 
 # from dsapi.service.data_breach_service import DataBreachService
 from dsapi.service.data_breach_record_service import DataBreachRecordService
@@ -121,7 +123,7 @@ class DSOnPollConnector(object):
 
                 if j != incident_total:
                     action_result.set_status(phantom.APP_ERROR,
-                                            status_message='Did not receive all the incident from Digital Shadows')
+                                                status_message='Did not receive all the incident from Digital Shadows')
                 else:
                     action_result.set_status(phantom.APP_SUCCESS)
 

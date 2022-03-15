@@ -6,7 +6,8 @@
 import phantom.app as phantom
 from phantom.action_result import ActionResult
 
-from digital_shadows_consts import *
+from digital_shadows_consts import (BREACH_RECORD_ID_KEY, SERVICE_ERR_MSG, BREACH_ID_KEY,
+                                    DS_GET_BREACH_NOT_FOUND, DS_GET_BREACH_SUCCESS, DS_API_KEY_CFG, DS_API_SECRET_KEY_CFG)
 
 from dsapi.service.data_breach_service import DataBreachService
 from dsapi.service.data_breach_record_service import DataBreachRecordService
