@@ -9,7 +9,7 @@ import base64
 
 from functools import wraps
 
-from ..config import ds_api_host, ds_api_base
+from ..config.config import ds_api_host, ds_api_base
 
 from .ds_abstract_service import DSAbstractService
 
@@ -81,7 +81,7 @@ class DSBaseService(DSAbstractService):
                     res_text = json.loads(content)
                 except json.decoder.JSONDecodeError:
                     return {'status': response['status'],
-                        'message': 'SUCCESS'}
+                            'message': 'SUCCESS'}
             else:
                 res_text = ""
             post_response = {

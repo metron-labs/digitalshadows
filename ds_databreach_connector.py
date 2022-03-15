@@ -131,11 +131,11 @@ class DSDataBreachConnector(object):
         try:
             breach_record_service = DataBreachRecordService(self._ds_api_key, self._ds_api_secret_key)
             breach_record_view = DataBreachRecordService.data_breach_records_view(
-                published=date_range, 
-                domain_names=param_domain_names, 
+                published=date_range,
+                domain_names=param_domain_names,
                 username=param_user_name,
-                password=param_password, 
-                review_statuses=param_review_statuses, 
+                password=param_password,
+                review_statuses=param_review_statuses,
                 distinction=param_distinction
             )
         except Exception as e:
@@ -228,7 +228,8 @@ class DSDataBreachConnector(object):
 
         try:
             breach_record_view = DataBreachRecordService.data_breach_records_view(username=user_name, published=published_date_range,
-                                                                domain_names=domain_names_param, review_statuses=review_statuses_param)
+                                                                                    domain_names=domain_names_param,
+                                                                                    review_statuses=review_statuses_param)
             self._connector.save_progress("Breach record View: {}".format(breach_record_view))
             breach_record_pages = breach_record_service.read_all_records(view=breach_record_view)
         except StopIteration:
@@ -286,7 +287,7 @@ class DSDataBreachConnector(object):
             for breach_record_review in breach_record_reviews:
                 action_result.add_data(breach_record_review)
             action_result.set_status(
-                phantom.APP_SUCCESS, 
+                phantom.APP_SUCCESS,
                 "Digital Shadows breach record reviews fetched for the Breach Record ID: {}".format(breach_record_id)
             )
         return action_result.get_status()

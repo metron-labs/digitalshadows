@@ -48,7 +48,7 @@ class InfrastructureSSLService(DSFindService):
     @DSBaseService.paginated(size=500)
     @DSBaseService.sorted('published')
     def infrastructure_ssl_view(published='ALL', domain=None, detected='ALL', grades=None, markedclosed=False, determinedresolved=False,
-	                            issues=None, statuses=None, revoked=False, incidenttypes=None, severities=None, alerted=False, reverse=None):
+                                issues=None, statuses=None, revoked=False, incidenttypes=None, severities=None, alerted=False, reverse=None):
         view = {
             'filter': {
                 'published': published,

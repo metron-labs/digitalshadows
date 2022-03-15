@@ -72,9 +72,9 @@ class IntelligenceIncidentService(DSFindService):
     @DSBaseService.paginated()
     @DSBaseService.sorted('published')
     def intelligence_incidents_view(since='1970-01-01', until=date.today(), date_range_field='occurred', date_range='P30D',
-                       severities=None, tag_operator='AND', tags=None, types=None,
-                       with_feedback=True, without_feedback=True,
-                       reverse=False, page_size=500, sort_property='occurred', identifier=None):
+                                    severities=None, tag_operator='AND', tags=None, types=None,
+                                    with_feedback=True, without_feedback=True,
+                                    reverse=False, page_size=500, sort_property='occurred', identifier=None):
         return {
             "filter": {
                 "identifier": "" if identifier is None else identifier,

@@ -48,7 +48,7 @@ class InfrastructureService(DSFindService):
     @DSBaseService.paginated(size=500)
     @DSBaseService.sorted('published')
     def infrastructure_view(detectedopen='ALL', domainname=None, detectedclosed=False, markedclosed=False,
-                         severities=None, alerted=False, reverse=None):
+                            severities=None, alerted=False, reverse=None):
         view = {
             'filter': {
                 'detectedOpen': detectedopen,

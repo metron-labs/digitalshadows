@@ -71,7 +71,7 @@ class DSIntelligenceIncidentsConnector(object):
                         'description': unidecode(intelligence_incident.payload['description']),
                         'entitysummary': {
                             'source': intelligence_incident.payload['entitySummary']['source'],
-                            'summarytext': intelligence_incident.payload['entitySummary']['summarytext'] 
+                            'summarytext': intelligence_incident.payload['entitySummary']['summarytext']
                             if 'summarytext' in intelligence_incident.payload['entitySummary'] else '',
                             'domain': intelligence_incident.payload['entitySummary']['domain'],
                             'sourceDate': intelligence_incident.payload['entitySummary']['sourceDate'],
@@ -104,7 +104,7 @@ class DSIntelligenceIncidentsConnector(object):
 
         try:
             intelligence_incident_ioc_pages = intelligence_incident_service.find_intel_incident_ioc_by_id(
-                intel_incident_id=intel_incident_id, 
+                intel_incident_id=intel_incident_id,
                 view=intelligence_incident_view
             )
             intelligence_incident_ioc_total = len(intelligence_incident_ioc_pages)
@@ -162,8 +162,8 @@ class DSIntelligenceIncidentsConnector(object):
         try:
             intelligence_incident_service = IntelligenceIncidentService(self._ds_api_key, self._ds_api_secret_key)
             intelligence_incident_view = IntelligenceIncidentService.intelligence_incidents_view(
-                date_range=date_ranges, 
-                date_range_field='published', 
+                date_range=date_ranges,
+                date_range_field='published',
                 types=incident_types
             )
         except Exception as e:
